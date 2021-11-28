@@ -1783,44 +1783,64 @@ namespace gsync2vid
                 return;
             if (chkAAC.Checked)
             {
-                if (MessageBox.Show("صدای تولید شده mp4 روی بعضی از دستگاهها پخش نمی شود.\nآیا ffmpeg-hi10-heaac.exe را دریافت کرده اید؟ دریافت این فایل اجرایی و فعال کردن گزینه acc این مشکل را حل می‌کند.", "پرسش",
+                if(string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
+                {
+                    string probableFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "ffmpeg\\ffmpeg-hi10-heaac.exe");
+                    if(File.Exists(probableFilePath))
+                    {
+                        Settings.Default.AACFFMpegPath = probableFilePath;
+                        Settings.Default.AACSound = true;
+                        Settings.Default.Save();
+                    }
+                }
+
+                if(string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
+                {
+                    if (MessageBox.Show("صدای تولید شده mp4 روی بعضی از دستگاهها پخش نمی شود.\nآیا ffmpeg-hi10-heaac.exe را دریافت کرده اید؟ دریافت این فایل اجرایی و فعال کردن گزینه acc این مشکل را حل می‌کند.", "پرسش",
                       MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
                       == DialogResult.Yes)
-                {
-                    MessageBox.Show("لطفا در مرحلهٔ بعد فایل ffmpeg-hi10-heaac.exe را از مسیر مورد نظر انتخاب کنید.", "آگاهی",
-                  MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-
-                    using (OpenFileDialog dlg = new OpenFileDialog())
                     {
-                        dlg.Filter = "*EXE Files (*.exe)|*.exe";
-                        dlg.FileName = "ffmpeg-hi10-heaac.exe";
-                        if (dlg.ShowDialog(this) == DialogResult.OK)
+                        MessageBox.Show("لطفا در مرحلهٔ بعد فایل ffmpeg-hi10-heaac.exe را از مسیر مورد نظر انتخاب کنید.", "آگاهی",
+                      MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+
+                        using (OpenFileDialog dlg = new OpenFileDialog())
                         {
-                            Settings.Default.AACFFMpegPath = dlg.FileName;                        
-                            Settings.Default.AACSound = true;
-                            Settings.Default.Save();
+                            dlg.Filter = "*EXE Files (*.exe)|*.exe";
+                            dlg.FileName = "ffmpeg-hi10-heaac.exe";
+                            if (dlg.ShowDialog(this) == DialogResult.OK)
+                            {
+                                Settings.Default.AACFFMpegPath = dlg.FileName;
+                                Settings.Default.AACSound = true;
+                                Settings.Default.Save();
+                            }
+                            else
+                            {
+                                chkAAC.Checked = false;
+                                return;
+                            }
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("آیا تمایل دارید هم‌اکنون این نرم‌افزار را دریافت کنید؟", "پرسش",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
+                            == DialogResult.Yes)
                         {
-                            chkAAC.Checked = false;
-                            return;
+                            Process.Start("https://sourceforge.net/projects/ffmpeg-hi/");
+
+                            MessageBox.Show("لطفا بعد از دریافت و باز کردن فایلها مجددا تلاش کنید.", "آگاهی",
+                                              MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                         }
+                        chkAAC.Checked = false;
+                        return;
                     }
                 }
                 else
                 {
-                    if (MessageBox.Show("آیا تمایل دارید هم‌اکنون این نرم‌افزار را دریافت کنید؟", "پرسش",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
-                        == DialogResult.Yes)
-                    {
-                        Process.Start("https://sourceforge.net/projects/ffmpeg-hi/");
-
-                        MessageBox.Show("لطفا بعد از دریافت و باز کردن فایلها مجددا تلاش کنید.", "آگاهی",
-                                          MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-                    }
-                    chkAAC.Checked = false;
-                    return;
+                    Settings.Default.AACSound = true;
+                    Settings.Default.Save();
                 }
+                
             }
             else
             {
