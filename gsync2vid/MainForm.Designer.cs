@@ -104,6 +104,9 @@
             this.lblTransitionEffect = new System.Windows.Forms.Label();
             this.chkAAC = new System.Windows.Forms.CheckBox();
             this.chkDebug = new System.Windows.Forms.CheckBox();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpConnection.SuspendLayout();
             this.grpPoem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
@@ -117,6 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trckAlpha)).BeginInit();
             this.statusStripMain.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpConnection
@@ -128,9 +132,9 @@
             this.grpConnection.Controls.Add(this.txtSrcDb);
             this.grpConnection.Controls.Add(this.lblSrcDb);
             this.grpConnection.Location = new System.Drawing.Point(5, 8);
-            this.grpConnection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpConnection.Margin = new System.Windows.Forms.Padding(2);
             this.grpConnection.Name = "grpConnection";
-            this.grpConnection.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpConnection.Padding = new System.Windows.Forms.Padding(2);
             this.grpConnection.Size = new System.Drawing.Size(798, 72);
             this.grpConnection.TabIndex = 0;
             this.grpConnection.TabStop = false;
@@ -151,7 +155,7 @@
             // btnSelDb
             // 
             this.btnSelDb.Location = new System.Drawing.Point(5, 15);
-            this.btnSelDb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelDb.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelDb.Name = "btnSelDb";
             this.btnSelDb.Size = new System.Drawing.Size(30, 24);
             this.btnSelDb.TabIndex = 2;
@@ -164,7 +168,7 @@
             this.txtSrcDb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSrcDb.Location = new System.Drawing.Point(39, 16);
-            this.txtSrcDb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSrcDb.Margin = new System.Windows.Forms.Padding(2);
             this.txtSrcDb.Name = "txtSrcDb";
             this.txtSrcDb.ReadOnly = true;
             this.txtSrcDb.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -200,9 +204,9 @@
             this.grpPoem.Controls.Add(this.txtPoem);
             this.grpPoem.Controls.Add(this.lblPoem);
             this.grpPoem.Location = new System.Drawing.Point(5, 87);
-            this.grpPoem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpPoem.Margin = new System.Windows.Forms.Padding(2);
             this.grpPoem.Name = "grpPoem";
-            this.grpPoem.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpPoem.Padding = new System.Windows.Forms.Padding(2);
             this.grpPoem.Size = new System.Drawing.Size(798, 70);
             this.grpPoem.TabIndex = 1;
             this.grpPoem.TabStop = false;
@@ -211,7 +215,7 @@
             // btnCatBatch
             // 
             this.btnCatBatch.Location = new System.Drawing.Point(425, 41);
-            this.btnCatBatch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCatBatch.Margin = new System.Windows.Forms.Padding(2);
             this.btnCatBatch.Name = "btnCatBatch";
             this.btnCatBatch.Size = new System.Drawing.Size(53, 24);
             this.btnCatBatch.TabIndex = 13;
@@ -222,7 +226,7 @@
             // btnApply
             // 
             this.btnApply.Location = new System.Drawing.Point(76, 38);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(51, 28);
             this.btnApply.TabIndex = 12;
@@ -233,7 +237,7 @@
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(5, 38);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(69, 28);
             this.btnReset.TabIndex = 11;
@@ -244,7 +248,7 @@
             // txtHeight
             // 
             this.txtHeight.Location = new System.Drawing.Point(136, 43);
-            this.txtHeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHeight.Margin = new System.Windows.Forms.Padding(2);
             this.txtHeight.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -277,7 +281,7 @@
             // txtWidth
             // 
             this.txtWidth.Location = new System.Drawing.Point(261, 42);
-            this.txtWidth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtWidth.Margin = new System.Windows.Forms.Padding(2);
             this.txtWidth.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -311,7 +315,7 @@
             // 
             this.txtSyncId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSyncId.Location = new System.Drawing.Point(482, 42);
-            this.txtSyncId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSyncId.Margin = new System.Windows.Forms.Padding(2);
             this.txtSyncId.Name = "txtSyncId";
             this.txtSyncId.ReadOnly = true;
             this.txtSyncId.Size = new System.Drawing.Size(68, 21);
@@ -332,7 +336,7 @@
             // 
             this.txtPoemId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPoemId.Location = new System.Drawing.Point(621, 41);
-            this.txtPoemId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPoemId.Margin = new System.Windows.Forms.Padding(2);
             this.txtPoemId.Name = "txtPoemId";
             this.txtPoemId.ReadOnly = true;
             this.txtPoemId.Size = new System.Drawing.Size(68, 21);
@@ -341,7 +345,7 @@
             // btnSelPoem
             // 
             this.btnSelPoem.Location = new System.Drawing.Point(5, 15);
-            this.btnSelPoem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelPoem.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelPoem.Name = "btnSelPoem";
             this.btnSelPoem.Size = new System.Drawing.Size(30, 24);
             this.btnSelPoem.TabIndex = 2;
@@ -354,7 +358,7 @@
             this.txtPoem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPoem.Location = new System.Drawing.Point(39, 16);
-            this.txtPoem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPoem.Margin = new System.Windows.Forms.Padding(2);
             this.txtPoem.Name = "txtPoem";
             this.txtPoem.ReadOnly = true;
             this.txtPoem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -424,9 +428,9 @@
             this.grpVerses.Controls.Add(this.chkAudioBound);
             this.grpVerses.Controls.Add(this.cmbVerses);
             this.grpVerses.Location = new System.Drawing.Point(5, 167);
-            this.grpVerses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpVerses.Margin = new System.Windows.Forms.Padding(2);
             this.grpVerses.Name = "grpVerses";
-            this.grpVerses.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpVerses.Padding = new System.Windows.Forms.Padding(2);
             this.grpVerses.Size = new System.Drawing.Size(798, 367);
             this.grpVerses.TabIndex = 2;
             this.grpVerses.TabStop = false;
@@ -435,7 +439,7 @@
             // btnIncreaseFontSize
             // 
             this.btnIncreaseFontSize.Location = new System.Drawing.Point(62, 91);
-            this.btnIncreaseFontSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIncreaseFontSize.Margin = new System.Windows.Forms.Padding(2);
             this.btnIncreaseFontSize.Name = "btnIncreaseFontSize";
             this.btnIncreaseFontSize.Size = new System.Drawing.Size(25, 24);
             this.btnIncreaseFontSize.TabIndex = 67;
@@ -446,7 +450,7 @@
             // btnDecreaseFontSize
             // 
             this.btnDecreaseFontSize.Location = new System.Drawing.Point(36, 91);
-            this.btnDecreaseFontSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDecreaseFontSize.Margin = new System.Windows.Forms.Padding(2);
             this.btnDecreaseFontSize.Name = "btnDecreaseFontSize";
             this.btnDecreaseFontSize.Size = new System.Drawing.Size(25, 24);
             this.btnDecreaseFontSize.TabIndex = 66;
@@ -457,7 +461,7 @@
             // btnVideoTools
             // 
             this.btnVideoTools.Location = new System.Drawing.Point(69, 13);
-            this.btnVideoTools.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVideoTools.Margin = new System.Windows.Forms.Padding(2);
             this.btnVideoTools.Name = "btnVideoTools";
             this.btnVideoTools.Size = new System.Drawing.Size(25, 24);
             this.btnVideoTools.TabIndex = 65;
@@ -468,7 +472,7 @@
             // btnEditTime
             // 
             this.btnEditTime.Location = new System.Drawing.Point(144, 13);
-            this.btnEditTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditTime.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditTime.Name = "btnEditTime";
             this.btnEditTime.Size = new System.Drawing.Size(25, 24);
             this.btnEditTime.TabIndex = 64;
@@ -480,7 +484,7 @@
             // 
             this.btnCopyTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyTo.Location = new System.Drawing.Point(251, 338);
-            this.btnCopyTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCopyTo.Margin = new System.Windows.Forms.Padding(2);
             this.btnCopyTo.Name = "btnCopyTo";
             this.btnCopyTo.Size = new System.Drawing.Size(30, 25);
             this.btnCopyTo.TabIndex = 63;
@@ -491,7 +495,7 @@
             // btnAddFrame
             // 
             this.btnAddFrame.Location = new System.Drawing.Point(119, 13);
-            this.btnAddFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddFrame.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddFrame.Name = "btnAddFrame";
             this.btnAddFrame.Size = new System.Drawing.Size(25, 24);
             this.btnAddFrame.TabIndex = 62;
@@ -503,7 +507,7 @@
             // 
             this.trckSize.LargeChange = 15;
             this.trckSize.Location = new System.Drawing.Point(4, 325);
-            this.trckSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trckSize.Margin = new System.Windows.Forms.Padding(2);
             this.trckSize.Maximum = 20;
             this.trckSize.Name = "trckSize";
             this.trckSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -518,7 +522,7 @@
             // 
             this.btnDelImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelImage.Location = new System.Drawing.Point(282, 338);
-            this.btnDelImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelImage.Name = "btnDelImage";
             this.btnDelImage.Size = new System.Drawing.Size(30, 25);
             this.btnDelImage.TabIndex = 59;
@@ -530,7 +534,7 @@
             // 
             this.btnAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddImage.Location = new System.Drawing.Point(313, 338);
-            this.btnAddImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddImage.Name = "btnAddImage";
             this.btnAddImage.Size = new System.Drawing.Size(30, 25);
             this.btnAddImage.TabIndex = 58;
@@ -561,7 +565,7 @@
             "انتقال قاب قبل به بالا",
             "انتقال قاب قبل به پایین"});
             this.cmbOverlayImages.Location = new System.Drawing.Point(345, 341);
-            this.cmbOverlayImages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbOverlayImages.Margin = new System.Windows.Forms.Padding(2);
             this.cmbOverlayImages.Name = "cmbOverlayImages";
             this.cmbOverlayImages.Size = new System.Drawing.Size(150, 21);
             this.cmbOverlayImages.TabIndex = 56;
@@ -570,7 +574,7 @@
             // btnDelFrame
             // 
             this.btnDelFrame.Location = new System.Drawing.Point(94, 13);
-            this.btnDelFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelFrame.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelFrame.Name = "btnDelFrame";
             this.btnDelFrame.Size = new System.Drawing.Size(25, 24);
             this.btnDelFrame.TabIndex = 55;
@@ -581,7 +585,7 @@
             // btnPairNext
             // 
             this.btnPairNext.Location = new System.Drawing.Point(5, 39);
-            this.btnPairNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPairNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnPairNext.Name = "btnPairNext";
             this.btnPairNext.Size = new System.Drawing.Size(23, 21);
             this.btnPairNext.TabIndex = 54;
@@ -594,7 +598,7 @@
             this.btnBorderColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBorderColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBorderColor.Location = new System.Drawing.Point(425, 231);
-            this.btnBorderColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBorderColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorderColor.Name = "btnBorderColor";
             this.btnBorderColor.Size = new System.Drawing.Size(30, 25);
             this.btnBorderColor.TabIndex = 53;
@@ -616,7 +620,7 @@
             // 
             this.txtThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtThickness.Location = new System.Drawing.Point(596, 231);
-            this.txtThickness.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtThickness.Margin = new System.Windows.Forms.Padding(2);
             this.txtThickness.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -642,7 +646,7 @@
             // 
             this.trckHPosition.LargeChange = 15;
             this.trckHPosition.Location = new System.Drawing.Point(5, 284);
-            this.trckHPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trckHPosition.Margin = new System.Windows.Forms.Padding(2);
             this.trckHPosition.Maximum = 20;
             this.trckHPosition.Name = "trckHPosition";
             this.trckHPosition.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -656,7 +660,7 @@
             // 
             this.btnProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProperties.Location = new System.Drawing.Point(587, 337);
-            this.btnProperties.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProperties.Margin = new System.Windows.Forms.Padding(2);
             this.btnProperties.Name = "btnProperties";
             this.btnProperties.Size = new System.Drawing.Size(175, 26);
             this.btnProperties.TabIndex = 47;
@@ -667,7 +671,7 @@
             // btnRandomImage
             // 
             this.btnRandomImage.Location = new System.Drawing.Point(62, 63);
-            this.btnRandomImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRandomImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnRandomImage.Name = "btnRandomImage";
             this.btnRandomImage.Size = new System.Drawing.Size(49, 25);
             this.btnRandomImage.TabIndex = 46;
@@ -680,7 +684,7 @@
             this.chkShowLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowLogo.AutoSize = true;
             this.chkShowLogo.Location = new System.Drawing.Point(645, 316);
-            this.chkShowLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkShowLogo.Margin = new System.Windows.Forms.Padding(2);
             this.chkShowLogo.Name = "chkShowLogo";
             this.chkShowLogo.Size = new System.Drawing.Size(115, 17);
             this.chkShowLogo.TabIndex = 45;
@@ -691,7 +695,7 @@
             // btnEditText
             // 
             this.btnEditText.Location = new System.Drawing.Point(169, 13);
-            this.btnEditText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditText.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditText.Name = "btnEditText";
             this.btnEditText.Size = new System.Drawing.Size(25, 24);
             this.btnEditText.TabIndex = 44;
@@ -703,7 +707,7 @@
             // 
             this.chkSlaveFrame.AutoSize = true;
             this.chkSlaveFrame.Location = new System.Drawing.Point(29, 41);
-            this.chkSlaveFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkSlaveFrame.Margin = new System.Windows.Forms.Padding(2);
             this.chkSlaveFrame.Name = "chkSlaveFrame";
             this.chkSlaveFrame.Size = new System.Drawing.Size(118, 17);
             this.chkSlaveFrame.TabIndex = 42;
@@ -714,7 +718,7 @@
             // btnResetImage
             // 
             this.btnResetImage.Location = new System.Drawing.Point(35, 64);
-            this.btnResetImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResetImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetImage.Name = "btnResetImage";
             this.btnResetImage.Size = new System.Drawing.Size(26, 24);
             this.btnResetImage.TabIndex = 40;
@@ -728,7 +732,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtComment.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtComment.Location = new System.Drawing.Point(275, 263);
-            this.txtComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtComment.Margin = new System.Windows.Forms.Padding(2);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.ReadOnly = true;
@@ -742,7 +746,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trckMaxTextWidth.LargeChange = 15;
             this.trckMaxTextWidth.Location = new System.Drawing.Point(271, 185);
-            this.trckMaxTextWidth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trckMaxTextWidth.Margin = new System.Windows.Forms.Padding(2);
             this.trckMaxTextWidth.Maximum = 255;
             this.trckMaxTextWidth.Name = "trckMaxTextWidth";
             this.trckMaxTextWidth.RightToLeftLayout = true;
@@ -767,7 +771,7 @@
             // 
             this.trckVPosition.LargeChange = 15;
             this.trckVPosition.Location = new System.Drawing.Point(209, 129);
-            this.trckVPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trckVPosition.Margin = new System.Windows.Forms.Padding(2);
             this.trckVPosition.Maximum = 20;
             this.trckVPosition.Name = "trckVPosition";
             this.trckVPosition.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -780,7 +784,7 @@
             // btnPreview
             // 
             this.btnPreview.Location = new System.Drawing.Point(1, 13);
-            this.btnPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(2);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(68, 24);
             this.btnPreview.TabIndex = 34;
@@ -792,7 +796,7 @@
             // 
             this.pbxPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbxPreview.Location = new System.Drawing.Point(5, 130);
-            this.pbxPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxPreview.Margin = new System.Windows.Forms.Padding(2);
             this.pbxPreview.Name = "pbxPreview";
             this.pbxPreview.Size = new System.Drawing.Size(201, 151);
             this.pbxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -805,7 +809,7 @@
             this.txtFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFont.Location = new System.Drawing.Point(91, 91);
-            this.txtFont.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFont.Margin = new System.Windows.Forms.Padding(2);
             this.txtFont.Name = "txtFont";
             this.txtFont.ReadOnly = true;
             this.txtFont.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -815,7 +819,7 @@
             // btnSelectFont
             // 
             this.btnSelectFont.Location = new System.Drawing.Point(5, 91);
-            this.btnSelectFont.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelectFont.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectFont.Name = "btnSelectFont";
             this.btnSelectFont.Size = new System.Drawing.Size(30, 25);
             this.btnSelectFont.TabIndex = 31;
@@ -840,7 +844,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trckAlpha.LargeChange = 15;
             this.trckAlpha.Location = new System.Drawing.Point(271, 149);
-            this.trckAlpha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trckAlpha.Margin = new System.Windows.Forms.Padding(2);
             this.trckAlpha.Maximum = 255;
             this.trckAlpha.Name = "trckAlpha";
             this.trckAlpha.RightToLeftLayout = true;
@@ -877,7 +881,7 @@
             this.btnTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTextColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTextColor.Location = new System.Drawing.Point(564, 113);
-            this.btnTextColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTextColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnTextColor.Name = "btnTextColor";
             this.btnTextColor.Size = new System.Drawing.Size(30, 27);
             this.btnTextColor.TabIndex = 26;
@@ -900,7 +904,7 @@
             this.btnTextBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTextBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTextBackColor.Location = new System.Drawing.Point(425, 113);
-            this.btnTextBackColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTextBackColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnTextBackColor.Name = "btnTextBackColor";
             this.btnTextBackColor.Size = new System.Drawing.Size(28, 27);
             this.btnTextBackColor.TabIndex = 24;
@@ -912,7 +916,7 @@
             this.btnBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBackColor.Location = new System.Drawing.Point(654, 113);
-            this.btnBackColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackColor.Name = "btnBackColor";
             this.btnBackColor.Size = new System.Drawing.Size(33, 27);
             this.btnBackColor.TabIndex = 22;
@@ -933,7 +937,7 @@
             // btnSelBackgroundImage
             // 
             this.btnSelBackgroundImage.Location = new System.Drawing.Point(5, 64);
-            this.btnSelBackgroundImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelBackgroundImage.Name = "btnSelBackgroundImage";
             this.btnSelBackgroundImage.Size = new System.Drawing.Size(30, 24);
             this.btnSelBackgroundImage.TabIndex = 8;
@@ -946,7 +950,7 @@
             this.txtBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBackgroundImage.Location = new System.Drawing.Point(115, 65);
-            this.txtBackgroundImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
             this.txtBackgroundImage.Name = "txtBackgroundImage";
             this.txtBackgroundImage.ReadOnly = true;
             this.txtBackgroundImage.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -969,7 +973,7 @@
             this.chkAudioBound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkAudioBound.AutoSize = true;
             this.chkAudioBound.Location = new System.Drawing.Point(665, 39);
-            this.chkAudioBound.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkAudioBound.Margin = new System.Windows.Forms.Padding(2);
             this.chkAudioBound.Name = "chkAudioBound";
             this.chkAudioBound.Size = new System.Drawing.Size(99, 17);
             this.chkAudioBound.TabIndex = 1;
@@ -984,7 +988,7 @@
             this.cmbVerses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVerses.FormattingEnabled = true;
             this.cmbVerses.Location = new System.Drawing.Point(196, 15);
-            this.cmbVerses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbVerses.Margin = new System.Windows.Forms.Padding(2);
             this.cmbVerses.Name = "cmbVerses";
             this.cmbVerses.Size = new System.Drawing.Size(570, 21);
             this.cmbVerses.TabIndex = 0;
@@ -1020,7 +1024,7 @@
             // 
             this.btnProduce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnProduce.Location = new System.Drawing.Point(5, 534);
-            this.btnProduce.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProduce.Margin = new System.Windows.Forms.Padding(2);
             this.btnProduce.Name = "btnProduce";
             this.btnProduce.Size = new System.Drawing.Size(122, 29);
             this.btnProduce.TabIndex = 12;
@@ -1032,7 +1036,7 @@
             // 
             this.btnSubtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSubtitle.Location = new System.Drawing.Point(132, 534);
-            this.btnSubtitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubtitle.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubtitle.Name = "btnSubtitle";
             this.btnSubtitle.Size = new System.Drawing.Size(109, 29);
             this.btnSubtitle.TabIndex = 14;
@@ -1052,7 +1056,7 @@
             "انتقال قاب قبل به بالا",
             "انتقال قاب قبل به پایین"});
             this.cmbTransitionEffect.Location = new System.Drawing.Point(467, 538);
-            this.cmbTransitionEffect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTransitionEffect.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTransitionEffect.Name = "cmbTransitionEffect";
             this.cmbTransitionEffect.Size = new System.Drawing.Size(201, 21);
             this.cmbTransitionEffect.TabIndex = 47;
@@ -1074,7 +1078,7 @@
             this.chkAAC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAAC.AutoSize = true;
             this.chkAAC.Location = new System.Drawing.Point(671, 539);
-            this.chkAAC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkAAC.Margin = new System.Windows.Forms.Padding(2);
             this.chkAAC.Name = "chkAAC";
             this.chkAAC.Size = new System.Drawing.Size(74, 17);
             this.chkAAC.TabIndex = 54;
@@ -1087,7 +1091,7 @@
             this.chkDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkDebug.AutoSize = true;
             this.chkDebug.Location = new System.Drawing.Point(758, 541);
-            this.chkDebug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkDebug.Margin = new System.Windows.Forms.Padding(2);
             this.chkDebug.Name = "chkDebug";
             this.chkDebug.Size = new System.Drawing.Size(44, 17);
             this.chkDebug.TabIndex = 55;
@@ -1095,11 +1099,40 @@
             this.chkDebug.UseVisualStyleBackColor = true;
             this.chkDebug.CheckedChanged += new System.EventHandler(this.chkDebug_CheckedChanged);
             // 
+            // mainMenu
+            // 
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(807, 24);
+            this.mainMenu.TabIndex = 68;
+            this.mainMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.fileToolStripMenuItem.Text = "پرونده";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "ذخیره ...";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 596);
+            this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.chkAAC);
             this.Controls.Add(this.lblTransitionEffect);
@@ -1112,7 +1145,7 @@
             this.Controls.Add(this.grpPoem);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -1136,6 +1169,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trckAlpha)).EndInit();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1218,6 +1253,9 @@
         private System.Windows.Forms.Button btnIncreaseFontSize;
         private System.Windows.Forms.Button btnDecreaseFontSize;
         private System.Windows.Forms.Button btnCatBatch;
+        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }
 

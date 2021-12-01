@@ -3411,8 +3411,19 @@ namespace gsync2vid
            
         }
 
+
         #endregion
 
-        
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Filter = "GSync2Vide Files (*.gsyn)|*.gsyn";
+                if (dlg.ShowDialog(this) != DialogResult.OK)
+                {
+                    return;
+                }
+            }
+        }
     }
 }
