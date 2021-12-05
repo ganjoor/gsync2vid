@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.Threading;
 using ganjoor.Utilities;
+using Newtonsoft.Json;
 
 namespace gsync2vid
 {
@@ -3419,9 +3420,23 @@ namespace gsync2vid
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
                 dlg.Filter = "GSync2Vide Files (*.gsyn)|*.gsyn";
-                if (dlg.ShowDialog(this) != DialogResult.OK)
+                if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    return;
+                    List<GVideoFrame> frames = new List<GVideoFrame>();
+                    foreach (var item in cmbVerses.Items)
+                    {
+                        GVideoFrame frame = item as GVideoFrame;
+                        frames.Add(frame);
+                    }
+
+                    GProject project = new GProject()
+                    {
+                        Frames = frames,
+                        VideoBackgroundPath = _VideoBackgroundPath
+                    };
+
+                    string jsonString = JsonConvert.SerializeObject(project, Formatting.Indented);
+                    File.WriteAllText(dlg.FileName, jsonString);
                 }
             }
         }
