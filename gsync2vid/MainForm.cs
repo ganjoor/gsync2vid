@@ -3431,12 +3431,36 @@ namespace gsync2vid
 
                     GProject project = new GProject()
                     {
+                        PoemId = Settings.Default.PoemId,
+                        AudioId = Settings.Default.AudioId,
                         Frames = frames,
                         VideoBackgroundPath = _VideoBackgroundPath
                     };
 
                     string jsonString = JsonConvert.SerializeObject(project, Formatting.Indented);
                     File.WriteAllText(dlg.FileName, jsonString);
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Filter = "GSync2Vide Files (*.gsyn)|*.gsyn";
+                if(dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    GProject project = JsonConvert.DeserializeObject<GProject>(File.ReadAllText(dlg.FileName));
+                    if(Settings.Default.PoemId == project.PoemId && Settings.Default.AudioId == project.AudioId)
+                    {
+                        _VideoBackgroundPath = project.VideoBackgroundPath;
+                        cmbVerses.Items.Clear();
+                        cmbVerses.Items.AddRange(project.Frames.ToArray());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid PoemId/AudioId.");
+                    }
                 }
             }
         }
