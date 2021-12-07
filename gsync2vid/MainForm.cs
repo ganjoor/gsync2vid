@@ -201,8 +201,8 @@ namespace gsync2vid
                     {
                         fakeSync.Add(new PoemAudio.SyncInfo()
                         {
-                            VerseOrder = v._Order-1,
-                            AudioMiliseconds = (v._Order * 1000),                            
+                            VerseOrder = v._Order - 1,
+                            AudioMiliseconds = (v._Order * 1000),
                         });
                     }
                     fakeAudio.SyncArray = fakeSync.ToArray();
@@ -210,7 +210,7 @@ namespace gsync2vid
                 }
                 if (audioFiles.Length > 0)
                 {
-                    foreach(PoemAudio audio in audioFiles)
+                    foreach (PoemAudio audio in audioFiles)
                         if (audio.Id == Settings.Default.AudioId)
                         {
                             strTitle = strTitle + " - " + audio.Description;
@@ -235,9 +235,9 @@ namespace gsync2vid
                                 }
                             }
 
-                            
 
-                            
+
+
                             List<GVideoFrame> frames = new List<GVideoFrame>();
 
 
@@ -277,12 +277,12 @@ namespace gsync2vid
 
                             string fullCat = poem._Title;
                             GanjoorCat cat = db.GetCategory(poem._CatID);
-                            if(cat != null)
+                            if (cat != null)
                             {
                                 fullCat = cat._Text;
 
                                 cat = db.GetCategory(cat._ParentID);
-                                while(cat != null)
+                                while (cat != null)
                                 {
                                     if (cat._ID == poet._CatID)
                                         break;
@@ -343,7 +343,7 @@ namespace gsync2vid
 
                             frames.Add(soundFrame);
 
-                            
+
 
 
 
@@ -385,17 +385,17 @@ namespace gsync2vid
                             cmbVerses.Items.Clear();
                             cmbVerses.Items.AddRange(frames.ToArray());
                             cmbVerses.SelectedIndex = 0;
-                            
+
                             break;
                         }
                 }
             }
-            
+
             if (refDb == null)
                 db.CloseDb();
 
             //btnProduce.Enabled = 
-                btnSubtitle.Enabled = Settings.Default.AudioId != 0;
+            btnSubtitle.Enabled = Settings.Default.AudioId != 0;
         }
         /// <summary>
         /// انتخاب شعر و خوانش
@@ -412,7 +412,7 @@ namespace gsync2vid
                 return;
             }
 
-            List<GanjoorPoet> poets =  db.Poets;
+            List<GanjoorPoet> poets = db.Poets;
 
             using (ItemSelector poetSeletor = new ItemSelector("انتخاب شاعر", poets.ToArray(), null))
             {
@@ -438,7 +438,7 @@ namespace gsync2vid
                                     {
 
                                         if (
-                                            GMessageBox.Ask("خوانشی یافت نشد. آیا تمایل دارید تصاویر ثابت تولید کنید؟", "خطا")                                            
+                                            GMessageBox.Ask("خوانشی یافت نشد. آیا تمایل دارید تصاویر ثابت تولید کنید؟", "خطا")
                                              == DialogResult.Yes)
                                         {
                                             Settings.Default.PoemId = poem._ID;
@@ -465,7 +465,7 @@ namespace gsync2vid
                                 }
                             }
 
-                           
+
                         }
                     }
                 }
@@ -485,7 +485,7 @@ namespace gsync2vid
             if (cmbVerses.SelectedItem == null)
                 return;
             GVideoFrame frame = cmbVerses.SelectedItem as GVideoFrame;
-            chkAudioBound.Checked = frame.AudioBound;          
+            chkAudioBound.Checked = frame.AudioBound;
             txtBackgroundImage.Text = frame.BackgroundImagePath;
             btnBackColor.BackColor = frame.BackColor;
             btnTextColor.BackColor = frame.TextColor;
@@ -548,7 +548,7 @@ namespace gsync2vid
         /// <param name="e"></param>
         private void btnSelBackgroundImage_Click(object sender, EventArgs e)
         {
-            if(cmbVerses.SelectedItem == null)
+            if (cmbVerses.SelectedItem == null)
                 return;
             GVideoFrame frame = cmbVerses.SelectedItem as GVideoFrame;
             using (OpenFileDialog dlg = new OpenFileDialog())
@@ -565,13 +565,13 @@ namespace gsync2vid
                     string strOldBackgroundImagePath = frame.BackgroundImagePath;
 
                     int idx = cmbVerses.SelectedIndex;
-                    for (int i = videoBackground ? 0 : idx ; i < cmbVerses.Items.Count; i++)
+                    for (int i = videoBackground ? 0 : idx; i < cmbVerses.Items.Count; i++)
                         if (
                             string.IsNullOrEmpty((cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath)
                             ||
                             (cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath == strOldBackgroundImagePath
                             )
-                            (cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath = strNewBackground;                            
+                            (cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath = strNewBackground;
 
                     txtBackgroundImage.Text = frame.BackgroundImagePath;
 
@@ -586,7 +586,7 @@ namespace gsync2vid
         private void btnResetImage_Click(object sender, EventArgs e)
         {
 
-            if(!string.IsNullOrEmpty(_VideoBackgroundPath))
+            if (!string.IsNullOrEmpty(_VideoBackgroundPath))
             {
                 _VideoBackgroundPath = "";
                 InvalidatePreview();
@@ -601,7 +601,7 @@ namespace gsync2vid
 
             int idx = cmbVerses.SelectedIndex;
             for (int i = idx; i < cmbVerses.Items.Count; i++)
-                if (                 
+                if (
                     (cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath == strOldBackgroundImagePath
                     )
                     (cmbVerses.Items[i] as GVideoFrame).BackgroundImagePath = "";
@@ -629,7 +629,7 @@ namespace gsync2vid
                     int idx = cmbVerses.SelectedIndex;
 
                     for (int i = idx; i < cmbVerses.Items.Count; i++)
-                            (cmbVerses.Items[i] as GVideoFrame).BackColor = dlg.Color;
+                        (cmbVerses.Items[i] as GVideoFrame).BackColor = dlg.Color;
 
 
                     btnBackColor.BackColor = dlg.Color;
@@ -676,7 +676,7 @@ namespace gsync2vid
                     int idx = cmbVerses.SelectedIndex;
 
                     for (int i = idx; i < cmbVerses.Items.Count; i++)
-                            (cmbVerses.Items[i] as GVideoFrame).TextColor = dlg.Color;
+                        (cmbVerses.Items[i] as GVideoFrame).TextColor = dlg.Color;
 
 
                     btnTextColor.BackColor = dlg.Color;
@@ -699,12 +699,12 @@ namespace gsync2vid
                     int idx = cmbVerses.SelectedIndex;
 
                     for (int i = idx; i < cmbVerses.Items.Count; i++)
-                            (cmbVerses.Items[i] as GVideoFrame).TextBackColor = dlg.Color;
+                        (cmbVerses.Items[i] as GVideoFrame).TextBackColor = dlg.Color;
 
 
-                   btnTextBackColor.BackColor = dlg.Color;
+                    btnTextBackColor.BackColor = dlg.Color;
 
-                   InvalidatePreview();
+                    InvalidatePreview();
                 }
             }
         }
@@ -717,7 +717,7 @@ namespace gsync2vid
             int idx = cmbVerses.SelectedIndex;
 
             for (int i = idx; i < cmbVerses.Items.Count; i++)
-                    (cmbVerses.Items[i] as GVideoFrame).TextBackColorAlpha = trckAlpha.Value;
+                (cmbVerses.Items[i] as GVideoFrame).TextBackColorAlpha = trckAlpha.Value;
 
             InvalidatePreview();
         }
@@ -830,7 +830,7 @@ namespace gsync2vid
 
             trckVPosition.Value = trckVPosition.Maximum / frame.TextVerticalPosRatioPortionFrom * (frame.TextVerticalPosRatioPortionFrom - frame.TextVerticalPosRatioPortion);
             trckHPosition.Value = trckHPosition.Maximum / frame.TextHorizontalPosRatioPortionFrom * frame.TextHorizontalPosRatioPortion;
-            
+
 
             trckSize.Visible = false;
 
@@ -844,12 +844,12 @@ namespace gsync2vid
             int idx = cmbVerses.SelectedIndex;
 
             bool overlayScrolling = false;
-            if(cmbOverlayImages.SelectedItem != null)
+            if (cmbOverlayImages.SelectedItem != null)
             {
                 GOverlayImage overlay = cmbOverlayImages.SelectedItem as GOverlayImage;
-                if(overlay != null)
+                if (overlay != null)
                 {
-                    if(!string.IsNullOrEmpty(overlay.ImagePath))
+                    if (!string.IsNullOrEmpty(overlay.ImagePath))
                     {
                         overlayScrolling = true;
                         overlay.VerticalPosRatioPortionFrom = trckVPosition.Maximum;
@@ -858,19 +858,19 @@ namespace gsync2vid
                 }
             }
 
-            if(!overlayScrolling)
-            for (int i = idx; i < cmbVerses.Items.Count; i++)
-            {
-                GVideoFrame frame = (cmbVerses.Items[i] as GVideoFrame);
-                if (i == idx || frame.MasterFrame == null)
+            if (!overlayScrolling)
+                for (int i = idx; i < cmbVerses.Items.Count; i++)
                 {
-                    frame.TextVerticalPosRatioPortionFrom = trckVPosition.Maximum;
-                    frame.TextVerticalPosRatioPortion = (trckVPosition.Maximum - trckVPosition.Value);
+                    GVideoFrame frame = (cmbVerses.Items[i] as GVideoFrame);
+                    if (i == idx || frame.MasterFrame == null)
+                    {
+                        frame.TextVerticalPosRatioPortionFrom = trckVPosition.Maximum;
+                        frame.TextVerticalPosRatioPortion = (trckVPosition.Maximum - trckVPosition.Value);
 
-                    if (i == idx && frame.MasterFrame != null)
-                        break;
+                        if (i == idx && frame.MasterFrame != null)
+                            break;
+                    }
                 }
-            }
 
             InvalidatePreview();
 
@@ -950,7 +950,7 @@ namespace gsync2vid
                 dlg.ItemName = frame.Text;
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    
+
                     frame.Text = dlg.ItemName;
 
                     int nIdx = cmbVerses.SelectedIndex;
@@ -960,7 +960,7 @@ namespace gsync2vid
 
                     cmbVerses.SelectedItem = frame;
 
-                                        
+
                     InvalidatePreview();
                 }
             }
@@ -985,11 +985,11 @@ namespace gsync2vid
                 {
                     try
                     {
-                        frame.StartInMiliseconds = Int32.Parse(dlg.ItemName);                        
+                        frame.StartInMiliseconds = Int32.Parse(dlg.ItemName);
                     }
                     catch (Exception exp)
                     {
-                        GMessageBox.SayError("لطفا یک عدد وارد کنید - " +  Environment.NewLine + exp.ToString());
+                        GMessageBox.SayError("لطفا یک عدد وارد کنید - " + Environment.NewLine + exp.ToString());
                     }
                 }
             }
@@ -1039,7 +1039,7 @@ namespace gsync2vid
                     };
 
                     cmbVerses.Items.Insert(cmbVerses.SelectedIndex + 1, frame);
-                    cmbVerses.SelectedItem = frame;                    
+                    cmbVerses.SelectedItem = frame;
 
                 }
             }
@@ -1056,7 +1056,7 @@ namespace gsync2vid
             if (cmbVerses.SelectedItem == null)
                 return;
             GVideoFrame frame = cmbVerses.SelectedItem as GVideoFrame;
-            if(frame.MasterFrame == null)
+            if (frame.MasterFrame == null)
             {
                 GMessageBox.SayError("فقط امکان حذف قابهای یکی شده با قاب پیشین وجود دارد.");
                 return;
@@ -1064,11 +1064,11 @@ namespace gsync2vid
             if (GMessageBox.Ask("آیا از حذف این قاب اطمینان دارید؟") == DialogResult.No)
                 return;
 
-            foreach(object item in cmbVerses.Items)
-                if((item as GVideoFrame).MasterFrame == frame)
+            foreach (object item in cmbVerses.Items)
+                if ((item as GVideoFrame).MasterFrame == frame)
                 {
                     (item as GVideoFrame).MasterFrame = frame.MasterFrame;
-                }            
+                }
 
             cmbVerses.Items.Remove(cmbVerses.SelectedItem);
             cmbVerses.SelectedItem = frame.MasterFrame;
@@ -1102,11 +1102,11 @@ namespace gsync2vid
             using (VideoTools dlg = new VideoTools())
             {
                 DialogResult rs = dlg.ShowDialog(this);
-                if(rs == DialogResult.Yes) //Cut
+                if (rs == DialogResult.Yes) //Cut
                 {
                     string startTime = dlg.StartTime;
                     DateTime dtStartTime;
-                    if(!DateTime.TryParse(startTime, out dtStartTime))
+                    if (!DateTime.TryParse(startTime, out dtStartTime))
                     {
                         GMessageBox.SayError("زمان شروع نامعتبر است.");
                         return;
@@ -1262,7 +1262,7 @@ namespace gsync2vid
                 {
                     int idx = cmbVerses.SelectedIndex;
 
-                    for (int i = idx+1; i < cmbVerses.Items.Count; i++)
+                    for (int i = idx + 1; i < cmbVerses.Items.Count; i++)
                     {
                         (cmbVerses.Items[i] as GVideoFrame).Shape = frame.Shape;
                     }
@@ -1316,7 +1316,7 @@ namespace gsync2vid
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Filter = "PNG Images (*.png)|*.png";
-                if(dlg.ShowDialog(this) == DialogResult.OK)
+                if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
 
                     GOverlayImage newImage = new GOverlayImage()
@@ -1335,7 +1335,7 @@ namespace gsync2vid
                     List<GOverlayImage> list = new List<GOverlayImage>();
                     if (frame.OverlayImages != null)
                         list.AddRange(frame.OverlayImages);
-                    if(cmbOverlayImages.SelectedIndex != -1)
+                    if (cmbOverlayImages.SelectedIndex != -1)
                     {
                         list.Insert(cmbOverlayImages.SelectedIndex + 1, newImage);
                     }
@@ -1369,7 +1369,7 @@ namespace gsync2vid
                 {
                     if (!string.IsNullOrEmpty(overlay.ImagePath))
                     {
-                        if(GMessageBox.Ask("آیا از حذف این تصویر اطمینان دارید؟") == DialogResult.Yes)
+                        if (GMessageBox.Ask("آیا از حذف این تصویر اطمینان دارید؟") == DialogResult.Yes)
                         {
                             List<GOverlayImage> list = new List<GOverlayImage>();
                             list.AddRange(frame.OverlayImages);
@@ -1397,7 +1397,7 @@ namespace gsync2vid
 
             if (currentFrame != null)
             {
-                if(currentFrame.MasterFrame != null)
+                if (currentFrame.MasterFrame != null)
                 {
                     GMessageBox.SayError("فقط امکان کپی از قابهایی که وابسته به قاب دیگری نیستند وجود دارد.");
                     return;
@@ -1412,7 +1412,7 @@ namespace gsync2vid
                         {
                             int nIdx = cmbVerses.SelectedIndex;
                             int nLast = -1;
-                            for(int i = nIdx+1; i<cmbVerses.Items.Count; i++)
+                            for (int i = nIdx + 1; i < cmbVerses.Items.Count; i++)
                             {
                                 GVideoFrame frame = cmbVerses.Items[i] as GVideoFrame;
                                 if (frame.MasterFrame == null)
@@ -1426,7 +1426,7 @@ namespace gsync2vid
                             }
                             if (nLast != -1)
                                 cmbVerses.SelectedIndex = nLast;
-                        }                          
+                        }
                     }
                     else
                         GMessageBox.SayError("لطفا یک لایه تصویری را انتخاب کنید.");
@@ -1516,9 +1516,9 @@ namespace gsync2vid
 
             using (ItemSelector dlg = new ItemSelector("تعداد مصرعها در هر قاب", new object[] { 2, 4 }, 2))
             {
-                if(dlg.ShowDialog(this) == DialogResult.OK)
+                if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    PairNext((int)dlg.SelectedItem);                    
+                    PairNext((int)dlg.SelectedItem);
                 }
             }
 
@@ -1561,12 +1561,12 @@ namespace gsync2vid
                 {
                     InvalidatePreview();
                     fisrtSet = false;
-                    if(!silentMode)
+                    if (!silentMode)
                     {
                         if (MessageBox.Show("این چینش برای مصرعهای بعدی هم اعمال شود؟", "تأییدیه", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading) == DialogResult.No)
                             return;
                     }
-                   
+
                 }
 
             }
@@ -1618,7 +1618,7 @@ namespace gsync2vid
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
                     string ext = Path.GetExtension(dlg.FileName).ToLower();
-                    if(ext != ".pptx")
+                    if (ext != ".pptx")
                     {
                         Settings.Default.VidDefExt = ext;
                         Settings.Default.Save();
@@ -1628,7 +1628,7 @@ namespace gsync2vid
                     {
                         CreatePresentation(dlg.FileName);
                     }
-                   
+
                 }
             }
         }
@@ -1637,7 +1637,7 @@ namespace gsync2vid
         private void CreatePresentation(string filePath)
         {
             List<GVideoFrame> frames = new List<GVideoFrame>();
-            foreach(var item in cmbVerses.Items)
+            foreach (var item in cmbVerses.Items)
             {
                 frames.Add(item as GVideoFrame);
             }
@@ -1666,16 +1666,16 @@ namespace gsync2vid
         /// <param name="e"></param>
         private void btnRandomImage_Click(object sender, EventArgs e)
         {
-            
+
             if (MessageBox.Show("با انتخاب این گزینه تصاویر تصادفی از سایت unsplash.com برای زوج قابهای فاقد تصویر زمینه انتخاب می‌شود. آیا موافقید؟", "تأییدیه", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading
                 | MessageBoxOptions.RightAlign) == DialogResult.Yes)
-            {                
+            {
                 using (UnsplashImageTypeForm dlg = new UnsplashImageTypeForm())
                 {
                     if (dlg.ShowDialog(this) != DialogResult.OK)
-                        return;                    
+                        return;
 
-                    if(!string.IsNullOrEmpty(dlg.ImageFolderPath))
+                    if (!string.IsNullOrEmpty(dlg.ImageFolderPath))
                     {
                         string[] images = Directory.GetFiles(dlg.ImageFolderPath, "*.jpg");
                         int nIdx = -1;
@@ -1712,7 +1712,7 @@ namespace gsync2vid
                         return;
                     }
                 }
-                
+
 
                 string url = String.Format(Settings.Default.UnsplashSearchUrl
                     , Settings.Default.LastImageWidth, Settings.Default.LastImageHeight);
@@ -1770,7 +1770,7 @@ namespace gsync2vid
             }
         }
 
-        
+
         private void cmbTransitionEffect_SelectedIndexChanged(object sender, EventArgs e)
         {
             Settings.Default.TransitionType = cmbTransitionEffect.SelectedIndex;
@@ -1784,10 +1784,10 @@ namespace gsync2vid
                 return;
             if (chkAAC.Checked)
             {
-                if(string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
+                if (string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
                 {
                     string probableFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "ffmpeg\\ffmpeg-hi10-heaac.exe");
-                    if(File.Exists(probableFilePath))
+                    if (File.Exists(probableFilePath))
                     {
                         Settings.Default.AACFFMpegPath = probableFilePath;
                         Settings.Default.AACSound = true;
@@ -1795,7 +1795,7 @@ namespace gsync2vid
                     }
                 }
 
-                if(string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
+                if (string.IsNullOrEmpty(Settings.Default.AACFFMpegPath))
                 {
                     if (MessageBox.Show("صدای تولید شده mp4 روی بعضی از دستگاهها پخش نمی شود.\nآیا ffmpeg-hi10-heaac.exe را دریافت کرده اید؟ دریافت این فایل اجرایی و فعال کردن گزینه acc این مشکل را حل می‌کند.", "پرسش",
                       MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
@@ -1841,7 +1841,7 @@ namespace gsync2vid
                     Settings.Default.AACSound = true;
                     Settings.Default.Save();
                 }
-                
+
             }
             else
             {
@@ -1857,7 +1857,7 @@ namespace gsync2vid
                 return;
             if (chkDebug.Checked)
             {
-                if (MessageBox.Show("با فعال کردن این گزینه (جهت اشکالیابی) در هنگام تولید خروجی mp4 میزان پیشرفت را نمی‌بینید." +  Environment.NewLine + "آیا موافقید؟", "تأییدیه",
+                if (MessageBox.Show("با فعال کردن این گزینه (جهت اشکالیابی) در هنگام تولید خروجی mp4 میزان پیشرفت را نمی‌بینید." + Environment.NewLine + "آیا موافقید؟", "تأییدیه",
                       MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
                       == DialogResult.No)
                 {
@@ -1905,10 +1905,10 @@ namespace gsync2vid
 
                             if (cmbVerses.SelectedItem != null)
                             {
-                                overlayImages = (cmbVerses.SelectedItem as GVideoFrame).OverlayImages;                               
+                                overlayImages = (cmbVerses.SelectedItem as GVideoFrame).OverlayImages;
                             }
 
-                            
+
 
                             PoemAudio fakeAudio = new PoemAudio()
                             {
@@ -2012,7 +2012,7 @@ namespace gsync2vid
                                 if (dlg.ShowDialog(this) == DialogResult.OK)
                                 {
 
-                                    thirdFrameText = dlg.ItemName;                                    
+                                    thirdFrameText = dlg.ItemName;
                                 }
                             }
 
@@ -2059,7 +2059,7 @@ namespace gsync2vid
                                     Color.FromArgb(128, 64, 0), //brick
                                     Color.FromArgb(64, 64, 0), //dark olive
                                 };
-                            
+
 
                             for (int i = 0; i < cmbVerses.Items.Count; i++)
                             {
@@ -2099,18 +2099,18 @@ namespace gsync2vid
                                     int nIdxSrtLine = 0;
 
 
-                                    int catId = catSelector.SelectedCatID;                                   
+                                    int catId = catSelector.SelectedCatID;
 
                                     string catVideo = GenerateCatVideo(catId, db, Path.GetDirectoryName(mainOutFile), overlayImages, subTitleTexts, ref subtitleShift, ref nIdxSrtLine, bkColors, ref colorIndex);
 
-                                   
+
 
 
                                     string mixStringPart1 = $"-i \"{mainOutFile}\" -i \"{catVideo}\"";
                                     string mixStringPart2 = "[0:v:0][0:a:0][1:v:0][1:a:0]";
 
                                     string tempOut = Path.Combine(Path.GetDirectoryName(mainOutFile), catId.ToString() + "-temp.mp4");
-                                    
+
                                     RunFFmpegCommand(
                                         Settings.Default.FFmpegPath,
                                         $"{mixStringPart1} -filter_complex \"{mixStringPart2}concat=n=2:v=1:a=1[outv][outa]\" -map \"[outv]\" -map \"[outa]\" \"{tempOut}\""
@@ -2120,9 +2120,9 @@ namespace gsync2vid
 
                                     File.Delete(catVideo);
 
-                                   
+
                                     File.Delete(tempOut);
-                                    
+
 
                                     File.WriteAllLines(Path.Combine(Path.GetDirectoryName(mainOutFile), Path.GetFileNameWithoutExtension(mainOutFile) + ".srt"), subTitleTexts.ToArray());
 
@@ -2192,7 +2192,7 @@ namespace gsync2vid
                 cmbVerses.SelectedIndex = 3;
 
                 double playTimeInMilliseconds;
-                subtitleTexts.AddRange(CreateSubTitle(db, subtitleShiftInMlliseconds, ref nIdxSrtLine, out playTimeInMilliseconds, new int[] { 0, 1}));
+                subtitleTexts.AddRange(CreateSubTitle(db, subtitleShiftInMlliseconds, ref nIdxSrtLine, out playTimeInMilliseconds, new int[] { 0, 1 }));
 
 
 
@@ -2213,7 +2213,7 @@ namespace gsync2vid
                     {
                         frame.OverlayImages = overlayImages;
 
-                        if(i > 0)
+                        if (i > 0)
                         {
                             GVideoFrame catFrame = new GVideoFrame()
                             {
@@ -2263,7 +2263,7 @@ namespace gsync2vid
                                 ShowLogo = false
                             };
                             frames.Add(poemFrame);
-                        }                        
+                        }
                     }
                 }
 
@@ -2276,7 +2276,7 @@ namespace gsync2vid
 
                 string poemVid = Path.Combine(outputFolder, poem._ID.ToString() + ".mp4");
 
-                InitiateRendering(poemVid, false, false);                
+                InitiateRendering(poemVid, false, false);
 
                 subtitleShiftInMlliseconds += playTimeInMilliseconds;
 
@@ -2291,7 +2291,7 @@ namespace gsync2vid
                     colorIndex = 0;
             }
 
-            foreach(GanjoorCat subCat in db.GetSubCategories(catId))
+            foreach (GanjoorCat subCat in db.GetSubCategories(catId))
             {
                 string subCatVideo = GenerateCatVideo(subCat._ID, db, outputFolder, overlayImages, subtitleTexts, ref subtitleShiftInMlliseconds, ref nIdxSrtLine, bkColors, ref colorIndex);
                 poemVideos.Add(subCatVideo);
@@ -2301,23 +2301,23 @@ namespace gsync2vid
                 mixStringPart2 += $"[{vIndex}:v:0][{vIndex}:a:0]";
             }
 
-                       
+
 
             string catVideo = Path.Combine(outputFolder, catId.ToString() + "-poems.mp4");
 
 
-            
+
             RunFFmpegCommand(
                 Settings.Default.FFmpegPath,
                 $"{mixStringPart1} -filter_complex \"{mixStringPart2}concat=n={poemVideos.Count}:v=1:a=1[outv][outa]\" -map \"[outv]\" -map \"[outa]\" \"{catVideo}\""
                 );
 
-        
+
             foreach (string poemvideo in poemVideos)
             {
                 File.Delete(poemvideo);
             }
-            
+
             return catVideo;
         }
         #endregion
@@ -2325,7 +2325,7 @@ namespace gsync2vid
         #region Render Frame
         private Image RenderFrame(GVideoFrame frame, Size szImageSize, Image imgMaster = null)
         {
-            
+
             if (frame == null)
                 return null;
 
@@ -2370,17 +2370,17 @@ namespace gsync2vid
                         );
                 }
 
-                if(frame.OverlayImages != null)
+                if (frame.OverlayImages != null)
                 {
-                    foreach(GOverlayImage overlay in frame.OverlayImages)
+                    foreach (GOverlayImage overlay in frame.OverlayImages)
                     {
-                        if(!string.IsNullOrEmpty(overlay.ImagePath))
+                        if (!string.IsNullOrEmpty(overlay.ImagePath))
                         {
                             using (Image bmpOverlay = Image.FromFile(overlay.ImagePath))
                             {
                                 g.DrawImage(bmpOverlay,
-                                     overlay.HorizontalPosRatioPortion * szImageSize.Width / overlay.HorizontalPosRatioPortionFrom  - bmpOverlay.Width / 2 * overlay.ScaleRatioPortion / overlay.ScaleRatioPortionFrom,
-                                     overlay.VerticalPosRatioPortion * szImageSize.Height / overlay.VerticalPosRatioPortionFrom  - bmpOverlay.Height / 2 * overlay.ScaleRatioPortion / overlay.ScaleRatioPortionFrom,
+                                     overlay.HorizontalPosRatioPortion * szImageSize.Width / overlay.HorizontalPosRatioPortionFrom - bmpOverlay.Width / 2 * overlay.ScaleRatioPortion / overlay.ScaleRatioPortionFrom,
+                                     overlay.VerticalPosRatioPortion * szImageSize.Height / overlay.VerticalPosRatioPortionFrom - bmpOverlay.Height / 2 * overlay.ScaleRatioPortion / overlay.ScaleRatioPortionFrom,
                                      overlay.ScaleRatioPortion * bmpOverlay.Width / overlay.ScaleRatioPortionFrom,
                                      overlay.ScaleRatioPortion * bmpOverlay.Height / overlay.ScaleRatioPortionFrom
                                      );
@@ -2401,10 +2401,10 @@ namespace gsync2vid
                     {
                         case GTextBoxShape.RoundRect:
                             {
-                                Rectangle rcBorder = new Rectangle((int) rcText.X,(int) rcText.Y, (int)rcText.Width ,(int)rcText.Height   );
+                                Rectangle rcBorder = new Rectangle((int)rcText.X, (int)rcText.Y, (int)rcText.Width, (int)rcText.Height);
                                 rcBorder.X -= frame.TextBackRectThickness;
                                 rcBorder.Y -= frame.TextBackRectThickness;
-                                rcBorder.Width += 2*frame.TextBackRectThickness;
+                                rcBorder.Width += 2 * frame.TextBackRectThickness;
                                 rcBorder.Height += 2 * frame.TextBackRectThickness;
                                 g.FillRoundedRectangle(bkTextBrush, rcBorder, (int)(rcBorder.Height / 4));
                                 if (frame.TextBackRectThickness > 0)
@@ -2427,7 +2427,7 @@ namespace gsync2vid
                     }
                 }
 
-                if(frame.TextBorderValue > 0)
+                if (frame.TextBorderValue > 0)
                 {
                     using (Image imgTemp = new Bitmap((int)rcText.Width, (int)rcText.Height))
                     {
@@ -2437,7 +2437,7 @@ namespace gsync2vid
                         using (Graphics gTemp = Graphics.FromImage(imgTemp))
                         {
                             using (SolidBrush bkBrush = new SolidBrush(bkTemp))
-                                gTemp.FillRectangle(bkBrush, rcTemp);                            
+                                gTemp.FillRectangle(bkBrush, rcTemp);
 
                             using (SolidBrush txtBrush = new SolidBrush(frame.TextBorderColor))
                                 gTemp.DrawString(frame.Text, frame.Font, txtBrush,
@@ -2448,8 +2448,8 @@ namespace gsync2vid
 
                         (imgTemp as Bitmap).MakeTransparent(bkTemp);
 
-                        
-                        for(int i= -frame.TextBorderValue; i<=frame.TextBorderValue; i++)
+
+                        for (int i = -frame.TextBorderValue; i <= frame.TextBorderValue; i++)
                         {
                             RectangleF rcTarget = rcText;
                             rcTarget.X -= i;
@@ -2515,9 +2515,9 @@ namespace gsync2vid
             {
                 if (string.IsNullOrEmpty(ffmpegPath))
                     ffmpegPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "ffmpeg");
-                if(!File.Exists(Path.Combine(ffmpegPath, "ffmpeg.exe")))
+                if (!File.Exists(Path.Combine(ffmpegPath, "ffmpeg.exe")))
                 {
-                    if(MessageBox.Show("برای تولید خروجی MP4 باید ffmpeg را دریافت و در مسیری باز کرده باشید.\nآیا این کار را کرده‌اید؟", "پرسش",
+                    if (MessageBox.Show("برای تولید خروجی MP4 باید ffmpeg را دریافت و در مسیری باز کرده باشید.\nآیا این کار را کرده‌اید؟", "پرسش",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign)
                         == DialogResult.Yes)
                     {
@@ -2570,7 +2570,7 @@ namespace gsync2vid
             }
 
             string audioFilePath = "";
-            if(!noAudio)
+            if (!noAudio)
             {
                 PoemAudio[] audioFiles = db.GetPoemAudioFiles(Settings.Default.PoemId);
                 if (audioFiles.Length > 0)
@@ -2599,10 +2599,10 @@ namespace gsync2vid
             this.Enabled = false;
 
             string wav = "";
-            int playtime = 
-                noAudio ? 
-                (cmbVerses.Items[cmbVerses.Items.Count - 1] as GVideoFrame).StartInMiliseconds  + 4000
-                : 0; 
+            int playtime =
+                noAudio ?
+                (cmbVerses.Items[cmbVerses.Items.Count - 1] as GVideoFrame).StartInMiliseconds + 4000
+                : 0;
             if (!noAudio)
             {
                 Mp3FileReader r = new Mp3FileReader(audioFilePath);
@@ -2642,7 +2642,7 @@ namespace gsync2vid
 
             lblStatus.Text = "ایجاد تصاویر ...";
 
-            
+
             List<string> ffmpegInputFiles = new List<string>();
             List<double> ffmpegDurations = new List<double>();
 
@@ -2688,14 +2688,14 @@ namespace gsync2vid
                 }
 
                 Image img = RenderFrame(frame, new Size(nWidth, nHeight));
-                string filename = Path.Combine(Path.GetTempPath(), 
+                string filename = Path.Combine(Path.GetTempPath(),
                     Guid.NewGuid().ToString() + ".jpg"//this is important! : jpg not png - although it's png by heart!                    
-                    ); 
-                if(bIsWmv)
+                    );
+                if (bIsWmv)
                     img.Save(filename);
                 else
                 {
-                    if(string.IsNullOrEmpty(_VideoBackgroundPath))
+                    if (string.IsNullOrEmpty(_VideoBackgroundPath))
                         img.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
                     else
                         img.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
@@ -2704,8 +2704,8 @@ namespace gsync2vid
                 _lstDeleteFileList.Add(filename);
                 int duration = i != (cmbVerses.Items.Count - 1) ? (cmbVerses.Items[i + 1] as GVideoFrame).StartInMiliseconds - frame.StartInMiliseconds : (playtime - frame.StartInMiliseconds);
                 //this is not a general solution and should be reviewed and rethought
-                if(!frame.AudioBound && frame.StartInMiliseconds < 0)
-                {                    
+                if (!frame.AudioBound && frame.StartInMiliseconds < 0)
+                {
                     duration = -frame.StartInMiliseconds;
                 }
                 if (frame.AudioBound)
@@ -2722,10 +2722,10 @@ namespace gsync2vid
                     }
                 }
 
-                
-                if(bIsWmv)
+
+                if (bIsWmv)
                 {
-                    IClip clip = videoTrack.AddImage(filename, 0, (double)(duration / 1000.0));                    
+                    IClip clip = videoTrack.AddImage(filename, 0, (double)(duration / 1000.0));
                 }
                 else
                 {
@@ -2830,7 +2830,7 @@ namespace gsync2vid
                                 string filename = Path.Combine(Path.GetTempPath(),
                                                     Guid.NewGuid().ToString() + ext
                                                     );
-                                
+
                                 imgOutput.Save(filename, ext == ".jpg" ? System.Drawing.Imaging.ImageFormat.Jpeg : System.Drawing.Imaging.ImageFormat.Png);
                                 newInputFiles.Add(filename);
                                 newDurations.Add(0.1);
@@ -2886,7 +2886,7 @@ namespace gsync2vid
                     }
                 }
 
-                
+
                 if (!string.IsNullOrEmpty(_VideoBackgroundPath))
                 {
 
@@ -2918,7 +2918,7 @@ namespace gsync2vid
                                     strSlowDownFilter = $", setpts = {fSlowDown} * PTS";
                                 }
                             }
-                            catch(Exception exp)
+                            catch (Exception exp)
                             {
                                 if (MessageBox.Show($"مقدار نامعتبر {exp.ToString()}{Environment.NewLine} ادامه می‌دهید؟", "خطا", MessageBoxButtons.YesNo) != DialogResult.Yes)
                                 {
@@ -3015,7 +3015,7 @@ namespace gsync2vid
 
                 if (File.Exists(outInTempPath))
                 {
-                    if(Settings.Default.AACSound)
+                    if (Settings.Default.AACSound)
                     {
                         if (!string.IsNullOrEmpty(Settings.Default.AACFFMpegPath) && File.Exists(Settings.Default.AACFFMpegPath))
                         {
@@ -3097,12 +3097,12 @@ namespace gsync2vid
                                     File.Delete(outInTempPath);
                                     outInTempPath = outInTempPathAAC;
                                 }
-                                catch(Exception exp)
+                                catch (Exception exp)
                                 {
                                     MessageBox.Show(exp.ToString());
                                 }
-                                
-                                 
+
+
                             }
                             else
                             {
@@ -3135,7 +3135,7 @@ namespace gsync2vid
                 if (File.Exists(outInTempPath))
                     File.Move(outInTempPath, outfilePath);
 
-                
+
             }
 
 
@@ -3143,14 +3143,14 @@ namespace gsync2vid
 
             lblStatus.Text = "آماده";
 
-            if(File.Exists(outfilePath))
+            if (File.Exists(outfilePath))
             {
-                if(askForPlaying)
-                if (MessageBox.Show("آیا مایلید فایل خروجی را مشاهده کنید؟", "تأییدیه", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign) == DialogResult.Yes)
-                {
-                    Process.Start(outfilePath);
-                }
+                if (askForPlaying)
+                    if (MessageBox.Show("آیا مایلید فایل خروجی را مشاهده کنید؟", "تأییدیه", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign) == DialogResult.Yes)
+                    {
+                        Process.Start(outfilePath);
+                    }
             }
             else
             {
@@ -3170,7 +3170,7 @@ namespace gsync2vid
         /// <param name="ffmpegPath"></param>
         /// <param name="cmdArgs"></param>
         private void RunFFmpegCommand(string ffmpegPath, string cmdArgs)
-        {        
+        {
             ProcessStartInfo ps = new ProcessStartInfo
                 (
                 Path.Combine(ffmpegPath, "ffmpeg.exe")
@@ -3251,8 +3251,8 @@ namespace gsync2vid
             double playTimeInMS;
             List<string> lines = CreateSubTitle(db, 0, ref nIdxSrtLine, out playTimeInMS);
 
-            if(lines != null)
-            File.WriteAllLines(outfilePath, lines.ToArray());
+            if (lines != null)
+                File.WriteAllLines(outfilePath, lines.ToArray());
 
             db.CloseDb();
 
@@ -3262,56 +3262,56 @@ namespace gsync2vid
         }
 
 
-       
+
         private List<string> CreateSubTitle(DbBrowser db, double shiftTimeInMilliSeconds, ref int nIdxSrtLine, out double subPlayTimeInMilliseconds, int[] ignoredFrameIndices = null)
         {
 
-                subPlayTimeInMilliseconds = 0;
-                double dSoundStart = -1.0;
+            subPlayTimeInMilliseconds = 0;
+            double dSoundStart = -1.0;
 
-                if(ignoredFrameIndices == null)
+            if (ignoredFrameIndices == null)
+            {
+                ignoredFrameIndices = new int[] { };
+            }
+
+            for (int i = 0; i < cmbVerses.Items.Count; i++)
+            {
+                GVideoFrame frame = cmbVerses.Items[i] as GVideoFrame;
+                if (frame.MasterFrame != null)
+                    continue;
+
+                if (dSoundStart < 0 && frame.AudioBound)
                 {
-                    ignoredFrameIndices = new int[] { };
-                }
-
-                for (int i=0; i<cmbVerses.Items.Count; i++)
-                {
-                    GVideoFrame frame = cmbVerses.Items[i] as GVideoFrame;
-                    if (frame.MasterFrame != null)
-                        continue;
-
-                    if (dSoundStart < 0 && frame.AudioBound)
+                    if (i > 0)
                     {
-                        if (i > 0)
+                        for (int j = (i - 1); j >= 0; j--)
                         {
-                            for (int j = (i - 1); j >= 0; j--)
+                            GVideoFrame pFrame = cmbVerses.Items[j] as GVideoFrame;
+                            if (pFrame.MasterFrame == null)
                             {
-                                GVideoFrame pFrame = cmbVerses.Items[j] as GVideoFrame;
-                                if (pFrame.MasterFrame == null)
-                                {
-                                    dSoundStart = -(pFrame.StartInMiliseconds / 1000.0);
-                                    break;
-                                }
-                            }
-                            if (frame.StartInMiliseconds != 0)
-                            {
-                                dSoundStart -= (frame.StartInMiliseconds / 1000.0);
-                                if (dSoundStart < 0)
-                                {
-                                    this.Enabled = true;
-                                    MessageBox.Show(String.Format("قدر مطلق زمان شروع اولین قاب باید بزرگتر از {0} باشد", frame.StartInMiliseconds));
-                                    return null;
-                                }
+                                dSoundStart = -(pFrame.StartInMiliseconds / 1000.0);
+                                break;
                             }
                         }
-                        else
+                        if (frame.StartInMiliseconds != 0)
                         {
-                            dSoundStart = frame.StartInMiliseconds / 1000.0;
+                            dSoundStart -= (frame.StartInMiliseconds / 1000.0);
+                            if (dSoundStart < 0)
+                            {
+                                this.Enabled = true;
+                                MessageBox.Show(String.Format("قدر مطلق زمان شروع اولین قاب باید بزرگتر از {0} باشد", frame.StartInMiliseconds));
+                                return null;
+                            }
                         }
-                        break;
                     }
-
+                    else
+                    {
+                        dSoundStart = frame.StartInMiliseconds / 1000.0;
+                    }
+                    break;
                 }
+
+            }
 
             dSoundStart += shiftTimeInMilliSeconds / 1000.0;
 
@@ -3341,7 +3341,7 @@ namespace gsync2vid
                 playtime = (int)mp3.TotalTime.TotalMilliseconds;
             }
 
-            
+
 
 
 
@@ -3363,12 +3363,12 @@ namespace gsync2vid
                     continue;
                 }
 
-                if(i == 0)
+                if (i == 0)
                 {
                     subPlayTimeInMilliseconds = frame.StartInMiliseconds > 0 ? playtime : playtime - frame.StartInMiliseconds;
                     subPlayTimeInMilliseconds /= 1000;
                 }
-                
+
                 nIdxSrtLine++;
                 DateTime dtStart = frame.StartInMiliseconds < 0 ? new DateTime(0).AddMilliseconds(shiftTimeInMilliSeconds) : new DateTime(0).AddMilliseconds(((frame.StartInMiliseconds) + dSoundStart * 1000.0));
                 int duration = i != (cmbVerses.Items.Count - 1) ? (cmbVerses.Items[i + 1] as GVideoFrame).StartInMiliseconds - frame.StartInMiliseconds : (playtime - frame.StartInMiliseconds);
@@ -3402,14 +3402,14 @@ namespace gsync2vid
                     lines.Add("");
                 }
 
-               
+
             }
 
 
-            
+
 
             return lines;
-           
+
         }
 
 
@@ -3426,6 +3426,7 @@ namespace gsync2vid
                     foreach (var item in cmbVerses.Items)
                     {
                         GVideoFrame frame = item as GVideoFrame;
+                        frame.Id = Guid.NewGuid();
                         frames.Add(frame);
                     }
 
@@ -3448,20 +3449,40 @@ namespace gsync2vid
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Filter = "GSync2Vide Files (*.gsyn)|*.gsyn";
-                if(dlg.ShowDialog(this) == DialogResult.OK)
+                if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
                     GProject project = JsonConvert.DeserializeObject<GProject>(File.ReadAllText(dlg.FileName));
-                    if(Settings.Default.PoemId == project.PoemId && Settings.Default.AudioId == project.AudioId)
+                    List<GVideoFrame> frames = new List<GVideoFrame>();
+                    foreach (var frame in project.Frames)
                     {
-                        _VideoBackgroundPath = project.VideoBackgroundPath;
-                        cmbVerses.Items.Clear();
-                        cmbVerses.Items.AddRange(project.Frames.ToArray());
+                        if(frame.MasterFrame != null)
+                        {
+                            frame.MasterFrame = project.Frames.Where(f => f.Id == frame.MasterFrame.Id).First();
+                        }
+                        frames.Add(frame);
                     }
-                    else
+                    
+                    if (Settings.Default.PoemId != project.PoemId || Settings.Default.AudioId != project.AudioId)
                     {
-                        MessageBox.Show("Invalid PoemId/AudioId.");
+                        DbBrowser db = Connect();
+                        if (db == null)
+                        {
+                            MessageBox.Show("(db == null)", "خطا", MessageBoxButtons.OK);
+                            return;
+                        }
+                        Settings.Default.PoemId = project.PoemId;
+                        Settings.Default.AudioId = project.AudioId;
+                        Settings.Default.Save();
+
+                        UpdatePoemAndAudioInfo(db);
                     }
+
+                    _VideoBackgroundPath = project.VideoBackgroundPath;
+                    cmbVerses.Items.Clear();
+                    cmbVerses.Items.AddRange(frames.ToArray());
+                    cmbVerses.SelectedIndex = 0;
                 }
+               
             }
         }
     }

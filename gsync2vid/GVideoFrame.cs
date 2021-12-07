@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
+﻿using System.Drawing;
 using System.ComponentModel;
+using System;
 
 namespace gsync2vid
 {
@@ -264,11 +261,14 @@ namespace gsync2vid
             set;
         }
 
-
+        /// <summary>
+        /// شناسه یکتا
+        /// </summary>
+        public Guid Id { get; set; }
 
         public override string ToString()
         {
-            return this.Text;
+            return Text;
         }
 
     }
