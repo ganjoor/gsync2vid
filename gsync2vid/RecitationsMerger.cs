@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System;
 using System.IO;
 using gsync2vid.Properties;
+using DocumentFormat.OpenXml.Presentation;
 
 namespace gsync2vid
 {
@@ -65,7 +66,7 @@ namespace gsync2vid
             }
         }
 
-        private void btnMerge_Click(object sender, System.EventArgs e)
+        private void btnMerge_Click(object sender, EventArgs e)
         {
             if(lstRecitations.Items.Count < 2)
             {
@@ -77,10 +78,56 @@ namespace gsync2vid
                 dlg.Filter = "MP3 Files (*.mp3)|*.mp3";
                 if(dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    List<string> lines = new List<string>();
-                    foreach (PoemAudio path in lstRecitations.Items)
+                    int addInMiliseconds = 0;
+                    PoemAudio firstItem = lstRecitations.Items[0] as PoemAudio;
+                    PoemAudio merged = new PoemAudio()
                     {
-                        lines.Add($"file '{path.FilePath}'");
+                        Id = firstItem.Id,
+                        PoemId = PoemId,
+                        FilePath = dlg.FileName,
+                        SyncGuid = Guid.NewGuid(),
+                        Description = firstItem.Description,
+                        DownloadUrl = "",
+                        IsDirectlyDownloadable = false,
+                        IsUploaded = false
+                    };
+                    List<PoemAudio.SyncInfo> syncs = new List<PoemAudio.SyncInfo>();
+                    foreach (PoemAudio item in lstRecitations.Items)
+                    {
+                        PoemAudioPlayer player = new PoemAudioPlayer();
+                        if (!player.BeginPlayback(item))
+                        {
+                            GMessageBox.SayError($"تلاش برای دسترسی و پخش فایل صوتی موفق نبود - {item}");
+                            return;
+                        }
+                        else
+                        {
+                            player.StopPlayBack();
+
+                            int nLen = item.SyncArray.Length;
+                            if (item.SyncArray[nLen - 1].AudioMiliseconds > player.TotalTimeInMiliseconds)
+                            {
+                                for (int i = 0; i < nLen; i++)
+                                {
+                                    item.SyncArray[i].AudioMiliseconds = item.SyncArray[i].AudioMiliseconds / 2;
+                                }
+                            }
+
+                            for (int i = 0; i < nLen; i++)
+                            {
+                                item.SyncArray[i].AudioMiliseconds += addInMiliseconds;
+                                syncs.Add(item.SyncArray[i]);
+                            }
+
+
+                            addInMiliseconds += player.TotalTimeInMiliseconds;
+                        }
+                    }
+                    merged.SyncArray = syncs.ToArray();
+                    List<string> lines = new List<string>();
+                    foreach (PoemAudio item in lstRecitations.Items)
+                    {
+                        lines.Add($"file '{item.FilePath}'");
                     }
 
                     string strTempList = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".txt");
@@ -109,11 +156,9 @@ namespace gsync2vid
 
                     if (File.Exists(outFileName))
                     {
-                        if (MessageBox.Show("آیا مایلید فایل خروجی را مشاهده کنید؟", "تأییدیه", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1,
-                            MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign) == DialogResult.Yes)
-                        {
-                            Process.Start(outFileName);
-                        }
+                        merged.FileCheckSum = PoemAudio.ComputeCheckSum(outFileName);
+                        PoemAudioListProcessor.Save(Path.Combine(Path.GetDirectoryName(outFileName), Path.GetFileNameWithoutExtension(outFileName) + ".xml"), merged, false);
+                        GMessageBox.Announce("ذخیره شد.");
                     }
                     else
                     {
