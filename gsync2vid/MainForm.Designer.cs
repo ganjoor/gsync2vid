@@ -106,8 +106,9 @@
             this.chkDebug = new System.Windows.Forms.CheckBox();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMerge = new System.Windows.Forms.Button();
             this.grpConnection.SuspendLayout();
             this.grpPoem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
@@ -191,6 +192,7 @@
             // 
             this.grpPoem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPoem.Controls.Add(this.btnMerge);
             this.grpPoem.Controls.Add(this.btnCatBatch);
             this.grpPoem.Controls.Add(this.btnApply);
             this.grpPoem.Controls.Add(this.btnReset);
@@ -215,10 +217,10 @@
             // 
             // btnCatBatch
             // 
-            this.btnCatBatch.Location = new System.Drawing.Point(425, 41);
+            this.btnCatBatch.Location = new System.Drawing.Point(421, 41);
             this.btnCatBatch.Margin = new System.Windows.Forms.Padding(2);
             this.btnCatBatch.Name = "btnCatBatch";
-            this.btnCatBatch.Size = new System.Drawing.Size(53, 24);
+            this.btnCatBatch.Size = new System.Drawing.Size(38, 24);
             this.btnCatBatch.TabIndex = 13;
             this.btnCatBatch.Text = "CAT";
             this.btnCatBatch.UseVisualStyleBackColor = true;
@@ -315,7 +317,7 @@
             // txtSyncId
             // 
             this.txtSyncId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSyncId.Location = new System.Drawing.Point(482, 42);
+            this.txtSyncId.Location = new System.Drawing.Point(463, 42);
             this.txtSyncId.Margin = new System.Windows.Forms.Padding(2);
             this.txtSyncId.Name = "txtSyncId";
             this.txtSyncId.ReadOnly = true;
@@ -326,7 +328,7 @@
             // 
             this.lblSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSync.AutoSize = true;
-            this.lblSync.Location = new System.Drawing.Point(553, 43);
+            this.lblSync.Location = new System.Drawing.Point(534, 43);
             this.lblSync.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSync.Name = "lblSync";
             this.lblSync.Size = new System.Drawing.Size(57, 13);
@@ -1119,25 +1121,35 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.fileToolStripMenuItem.Text = "پرونده";
             // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "ذخیره ...";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.openToolStripMenuItem.Text = "بارگذاری ...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.saveToolStripMenuItem.Text = "ذخیره ...";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // btnMerge
+            // 
+            this.btnMerge.Location = new System.Drawing.Point(595, 41);
+            this.btnMerge.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(22, 24);
+            this.btnMerge.TabIndex = 14;
+            this.btnMerge.Text = "M";
+            this.btnMerge.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1269,6 +1281,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.Button btnMerge;
     }
 }
 
