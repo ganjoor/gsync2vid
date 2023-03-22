@@ -72,8 +72,9 @@
             this.btnMerge.Name = "btnMerge";
             this.btnMerge.Size = new System.Drawing.Size(138, 23);
             this.btnMerge.TabIndex = 4;
-            this.btnMerge.Text = "انتخاب مسیر خروجی";
+            this.btnMerge.Text = "تولید خروجی";
             this.btnMerge.UseVisualStyleBackColor = true;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // RecitationsMerger
             // 
