@@ -3485,5 +3485,20 @@ namespace gsync2vid
                
             }
         }
+
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            DbBrowser db = Connect();
+            if (db == null)
+            {
+                MessageBox.Show("(db == null)", "خطا", MessageBoxButtons.OK);
+                return;
+            }
+            using (RecitationsMerger dlg = new RecitationsMerger(Settings.Default.PoemId, db))
+            {
+                dlg.ShowDialog(this);
+            }
+            db.CloseDb();
+        }
     }
 }

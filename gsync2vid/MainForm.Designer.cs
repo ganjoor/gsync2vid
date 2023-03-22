@@ -1150,6 +1150,7 @@
             this.btnMerge.TabIndex = 14;
             this.btnMerge.Text = "M";
             this.btnMerge.UseVisualStyleBackColor = true;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // MainForm
             // 

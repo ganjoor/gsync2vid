@@ -161,6 +161,12 @@
     <Compile Include="PowerPointGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecitationsMerger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecitationsMerger.Designer.cs">
+      <DependentUpon>RecitationsMerger.cs</DependentUpon>
+    </Compile>
     <Compile Include="UnsplashImageTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RecitationsMerger.resx">
+      <DependentUpon>RecitationsMerger.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UnsplashImageTypeForm.resx">
       <DependentUpon>UnsplashImageTypeForm.cs</DependentUpon>
     </EmbeddedResource>
