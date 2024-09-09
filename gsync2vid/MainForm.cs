@@ -3391,9 +3391,9 @@ namespace gsync2vid
 
                 lines.Add(nIdxSrtLine.ToString());
                 lines.Add(
-                    dtStart.ToString("HH:mm:ss.fff")
+                    dtStart.ToString("HH:mm:ss,fff")
                     + " --> "
-                    + dtEnd.ToString("HH:mm:ss.fff")
+                    + dtEnd.ToString("HH:mm:ss,fff")
                     );
 
                 if (!ignoredFrameIndices.Contains(i))
